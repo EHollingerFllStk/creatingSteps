@@ -1,4 +1,4 @@
-# Expanding Card Widget
+# Progress Steps Widget
 
 As I endeavor to expand my knowledge of HTML, CSS and JavaScript, I decided to
 buy the Udemy course
