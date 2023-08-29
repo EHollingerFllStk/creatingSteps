@@ -1,10 +1,14 @@
+/* to start with a default font */
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
+/* use custom properties with the root scope-applies styling to entire doc using var()*/
 :root {
   --line-border-fill: #3498db;
   --line-border-empty: #e0e0e0;
 }
 
+/* universal selector (*) - applies styling to entire doc */
+/* box-sizing property set to border-box so if add any padding or any border onto an element it doesn't change the width of the element Note: add to everything you do*/
 * {
   box-sizing: border-box;
 }
@@ -20,31 +24,43 @@ body {
   margin: 0;
 }
 
+/* aligns the text to the center */
 .container {
   text-align: center;
 }
 
+/* progress-container wraps around numbers not buttons */
 .progress-container {
   display: flex;
+  /* use space b/t to seperate them out */
   justify-content: space-between;
+  /* position: relative so can position other things inside of numbers */
   position: relative;
+  /* numbers below move container away from relative (normal) position per amount of px or % */
   margin-bottom: 30px;
   max-width: 100%;
   width: 350px;
 }
 
+/* progress container::before is the gray line */
 .progress-container::before {
   content: '';
   background-color: var(--line-border-empty);
+  /* position absolute within container(its parent) that is relative; can position element exactly where you want in its parent container */
   position: absolute;
+  /* values for the gray line */
   top: 50%;
   left: 0;
+  /* moves the middle of the line (not the top) to the middle of numbers  */
   transform: translateY(-50%);
   height: 4px;
+  /* gray line is 100% b/c want to show all the time */
   width: 100%;
+  /* puts the line behind the numbers  */
   z-index: -1;
 }
 
+/* progress is blue line */
 .progress {
   background-color: var(--line-border-fill);
   position: absolute;
@@ -52,17 +68,21 @@ body {
   left: 0;
   transform: translateY(-50%);
   height: 4px;
+  /* blue line starts at 0 but will change with progress */
   width: 0%;
   z-index: -1;
+  /* so that ease into changes with the line */
   transition: .4s ease
 }
 
+/* style the circles around buttons */
 .circle {
   background-color: #fff;
   color: #999;
   border-radius: 50%;
   height: 30px;
   width: 30px;
+  /* put numbers in middle of circless-display: flex; align-items: center; and justify-content:center; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,6 +94,7 @@ body {
   border-color: var(--line-border-fill);
 }
 
+/* style buttons */
 .btn {
   background-color: var(--line-border-fill);
   color: #FFF;
@@ -86,14 +107,17 @@ body {
   font-size: 14px;
 }
 
+/* adds a scaling effect when the button is active */
 .btn:active {
   transform: scale(0.98);
 }
 
+/* set outline to none when pointer is hovered over it */
 .btn:focus {
   outline: 0;
 }
 
+/* when button is disabled keep it on gray cursor on it won't do anything */
 .btn:disabled {
   background-color: var(--line-border-empty);
   cursor: not-allowed;
